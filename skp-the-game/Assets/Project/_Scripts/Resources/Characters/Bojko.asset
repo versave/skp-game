@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bojko
   m_EditorClassIdentifier: 
   _characterId: 1
-  displayName: Bojko
-  menuSprite: {fileID: 21300000, guid: 33a48356a6dee475aa802eec622dc12a, type: 3}
-  spawnPosition: {x: 0, y: 0}
+  _displayName: Bojko
+  _menuSprite: {fileID: 21300000, guid: 33a48356a6dee475aa802eec622dc12a, type: 3}
+  _spawnPosition: {x: -17, y: 10, z: 0}
+  _animatorController: {fileID: 9100000, guid: 7f1eec8100a784bd98e8e5840b4a9f8f, type: 2}

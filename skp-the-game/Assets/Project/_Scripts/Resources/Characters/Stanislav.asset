@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Stanislav
   m_EditorClassIdentifier: 
   _characterId: 0
-  displayName: Stanislav
-  menuSprite: {fileID: 21300000, guid: 078de616adbca42648f76cd56d07e883, type: 3}
-  spawnPosition: {x: 0, y: 0}
+  _displayName: Stankata
+  _menuSprite: {fileID: 21300000, guid: 078de616adbca42648f76cd56d07e883, type: 3}
+  _spawnPosition: {x: 0, y: 0}
+  _animatorController: {fileID: 9100000, guid: 2b7f6a334fb6b4229a3591533cc911ee, type: 2}
