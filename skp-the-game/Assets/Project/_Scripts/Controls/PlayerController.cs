@@ -1,10 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
-    public static Action<Transform> OnPlayerSpawn;
-
     [SerializeField] private float moveSpeed = 5f;
     private Animator animator;
     private Vector2 lastMoveDirection;
@@ -21,7 +18,6 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        OnPlayerSpawn?.Invoke(transform);
     }
 
     private void Update() {

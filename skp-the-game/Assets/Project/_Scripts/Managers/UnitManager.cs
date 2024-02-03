@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class UnitManager : MonoBehaviour {
-    [SerializeField] private GameObject characterPrefab;
+    [SerializeField] private PlayerCharacterUnit playerCharacterUnitPrefab;
+    [SerializeField] private CharacterUnit characterPrefab;
     private UniqueCharacterId playerId;
 
     private void Start() {
@@ -13,27 +14,14 @@ public class UnitManager : MonoBehaviour {
 
     private void SpawnPlayer() {
         Character playerCharacter = ResourceSystem.Instance.GetCharacter(playerId);
-        GameObject playerObj = Instantiate(characterPrefab, transform);
-        Animator playerObjAnimator = playerObj.GetComponent<Animator>();
-        CharacterUnit playerObjCharacterUnit = playerObj.GetComponent<CharacterUnit>();
-        AddRigidBodyComponent(playerObj);
-        AddPlayerControllerComponent(playerObj);
+        PlayerCharacterUnit playerObj = Instantiate(playerCharacterUnitPrefab, transform);
+        Animator playerObjAnimator = playerObj.animator;
 
         playerObj.name = "Player";
         playerObj.tag = GameTags.PLAYER;
+        playerObj.characterId = playerCharacter.characterId;
         playerObj.transform.position = playerCharacter.spawnPosition;
         playerObjAnimator.runtimeAnimatorController = playerCharacter.animatorController;
-        playerObjCharacterUnit.characterId = playerCharacter.characterId;
-    }
-
-    private void AddRigidBodyComponent(GameObject gameObject) {
-        Rigidbody2D rigidBody = gameObject.AddComponent<Rigidbody2D>();
-        rigidBody.gravityScale = 0;
-        rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
-    }
-
-    private void AddPlayerControllerComponent(GameObject gameObject) {
-        PlayerController playerController = gameObject.AddComponent<PlayerController>();
     }
 
     private void SpawnNpcs() {
@@ -45,14 +33,13 @@ public class UnitManager : MonoBehaviour {
     }
 
     private void SpawnNpcCharacter(Character character) {
-        GameObject npcObj = Instantiate(characterPrefab, transform);
-        Animator npcObjAnimator = npcObj.GetComponent<Animator>();
-        CharacterUnit npcObjCharacterUnit = npcObj.GetComponent<CharacterUnit>();
+        CharacterUnit npcObj = Instantiate(characterPrefab, transform);
+        Animator npcObjAnimator = npcObj.animator;
 
         npcObj.name = character.displayName;
         npcObj.tag = GameTags.NPC;
+        npcObj.characterId = character.characterId;
         npcObj.transform.position = character.spawnPosition;
         npcObjAnimator.runtimeAnimatorController = character.animatorController;
-        npcObjCharacterUnit.characterId = character.characterId;
     }
 }

@@ -2,17 +2,17 @@ using Cinemachine;
 using UnityEngine;
 
 public class Camera : MonoBehaviour {
-    public CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
     private void OnEnable() {
-        PlayerController.OnPlayerSpawn += SetFollowTarget;
+        PlayerCharacterUnit.OnPlayerSpawn += SetFollowTarget;
     }
 
     private void OnDisable() {
-        PlayerController.OnPlayerSpawn -= SetFollowTarget;
+        PlayerCharacterUnit.OnPlayerSpawn -= SetFollowTarget;
     }
 
-    public void SetFollowTarget(Transform targetTransform) {
+    private void SetFollowTarget(Transform targetTransform) {
         virtualCamera.Follow = targetTransform;
     }
 }
