@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float _moveSpeed = 5f;
     private Animator animator;
     private Vector2 lastMoveDirection;
     private Vector2 moveDirection;
@@ -10,6 +10,11 @@ public class PlayerController : MonoBehaviour {
     private InputAction moveInputAction;
     private PlayerInputActions playerControls;
     private Rigidbody2D rigidBody;
+
+    public float moveSpeed {
+        get => _moveSpeed;
+        set => _moveSpeed = value;
+    }
 
     private void Awake() {
         playerControls = new PlayerInputActions();
