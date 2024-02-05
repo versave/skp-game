@@ -17,3 +17,4 @@ MonoBehaviour:
   _menuSprite: {fileID: 21300000, guid: 078de616adbca42648f76cd56d07e883, type: 3}
   _spawnPosition: {x: -6, y: 0, z: 0}
   _animatorController: {fileID: 9100000, guid: 2b7f6a334fb6b4229a3591533cc911ee, type: 2}
+  _ability: {fileID: 11400000, guid: 4e8084d15534542c98fa62898fc949b7, type: 2}
