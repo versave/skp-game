@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ab65c43d7f492799eea65d0c56314a, type: 3}
   m_Name: Bojko
   m_EditorClassIdentifier: 
-  _characterId: 1
-  _displayName: Bojko
-  _menuSprite: {fileID: 21300000, guid: 33a48356a6dee475aa802eec622dc12a, type: 3}
-  _spawnPosition: {x: -15, y: 0, z: 0}
-  _animatorController: {fileID: 9100000, guid: 7f1eec8100a784bd98e8e5840b4a9f8f, type: 2}
-  _ability: {fileID: 11400000, guid: c69962179094142688264cea4db52282, type: 2}
+  <characterId>k__BackingField: 1
+  <displayName>k__BackingField: Bojko
+  <menuSprite>k__BackingField: {fileID: 21300000, guid: 33a48356a6dee475aa802eec622dc12a,
+    type: 3}
+  <spawnPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <animatorController>k__BackingField: {fileID: 9100000, guid: 7f1eec8100a784bd98e8e5840b4a9f8f,
+    type: 2}
+  <ability>k__BackingField: {fileID: 11400000, guid: c69962179094142688264cea4db52282,
+    type: 2}

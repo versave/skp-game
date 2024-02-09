@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ab65c43d7f492799eea65d0c56314a, type: 3}
   m_Name: Stanislav
   m_EditorClassIdentifier: 
-  _characterId: 0
-  _displayName: Stankata
-  _menuSprite: {fileID: 21300000, guid: 078de616adbca42648f76cd56d07e883, type: 3}
-  _spawnPosition: {x: -6, y: 0, z: 0}
-  _animatorController: {fileID: 9100000, guid: 2b7f6a334fb6b4229a3591533cc911ee, type: 2}
-  _ability: {fileID: 11400000, guid: 4e8084d15534542c98fa62898fc949b7, type: 2}
+  <characterId>k__BackingField: 0
+  <displayName>k__BackingField: Stanislav
+  <menuSprite>k__BackingField: {fileID: 21300000, guid: 078de616adbca42648f76cd56d07e883,
+    type: 3}
+  <spawnPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <animatorController>k__BackingField: {fileID: 9100000, guid: 2b7f6a334fb6b4229a3591533cc911ee,
+    type: 2}
+  <ability>k__BackingField: {fileID: 11400000, guid: 4e8084d15534542c98fa62898fc949b7,
+    type: 2}

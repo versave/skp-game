@@ -15,14 +15,7 @@ public class UnitManager : MonoBehaviour {
     private void SpawnPlayer() {
         Character playerCharacter = ResourceSystem.Instance.GetCharacter(playerId);
         PlayerCharacterUnit playerObj = Instantiate(playerCharacterUnitPrefab, transform);
-        Animator playerObjAnimator = playerObj.animator;
-
-        // Possibly do all of this in the player Start script, also for NPCs
-        playerObj.name = "Player";
-        playerObj.characterId = playerCharacter.characterId;
-        playerObj.transform.position = playerCharacter.spawnPosition;
-        // playerObj.abilityController.ability = playerCharacter.ability;
-        playerObjAnimator.runtimeAnimatorController = playerCharacter.animatorController;
+        playerObj.character = playerCharacter;
     }
 
     private void SpawnNpcs() {
@@ -35,11 +28,6 @@ public class UnitManager : MonoBehaviour {
 
     private void SpawnNpcCharacter(Character character) {
         CharacterUnit npcObj = Instantiate(characterPrefab, transform);
-        Animator npcObjAnimator = npcObj.animator;
-
-        npcObj.name = character.displayName;
-        npcObj.characterId = character.characterId;
-        npcObj.transform.position = character.spawnPosition;
-        npcObjAnimator.runtimeAnimatorController = character.animatorController;
+        npcObj.character = character;
     }
 }

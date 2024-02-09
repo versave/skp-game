@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class AbilityController : MonoBehaviour {
-    [SerializeField] private AbilityBase ability;
+    public AbilityBase ability;
     private AbilityState abilityState = AbilityState.Ready;
 
     private float cooldownSeconds;
