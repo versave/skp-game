@@ -8,7 +8,7 @@ public class CoinScript : MonoBehaviour {
     }
 
     private void CollectCoin() {
-        GameEventsManager.Instance.GoldEvents.GoldGained(1);
+        GameEventsManager.Instance.goldEvents.GoldGained(1);
         Destroy(gameObject);
     }
 }

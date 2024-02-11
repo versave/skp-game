@@ -5,19 +5,17 @@ public class CollectCoinsQuestStep : QuestStep {
     private int coinsCollected;
 
     private void OnEnable() {
-        GameEventsManager.Instance.GoldEvents.onGoldGainedEvent += OnCoinCollected;
+        GameEventsManager.Instance.goldEvents.onGoldGainedEvent += OnCoinCollected;
     }
 
     private void OnDisable() {
-        GameEventsManager.Instance.GoldEvents.onGoldGainedEvent -= OnCoinCollected;
+        GameEventsManager.Instance.goldEvents.onGoldGainedEvent -= OnCoinCollected;
     }
 
     private void OnCoinCollected(int gold) {
         if (coinsCollected < coinsToCollect) {
             coinsCollected++;
         }
-
-        Debug.Log("Coins collected: " + coinsCollected);
 
         if (coinsCollected >= coinsToCollect) {
             Debug.Log("Quest step completed!");

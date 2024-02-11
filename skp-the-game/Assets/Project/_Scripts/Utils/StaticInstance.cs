@@ -19,16 +19,21 @@ public abstract class StaticInstance<T> : MonoBehaviour where T : MonoBehaviour 
 }
 
 /// <summary>
-///     This transforms the static instance into a basic singleton. This will destroy any new
+///     Basic singleton. This will destroy any new
 ///     versions created, leaving the original instance intact
 /// </summary>
-public abstract class Singleton<T> : StaticInstance<T> where T : MonoBehaviour {
-    protected override void Awake() {
+public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
+    public static T Instance { get; private set; }
+
+    protected virtual void Awake() {
+        if (Instance != null) { }
+
         if (Instance != null) {
+            Debug.LogWarning("Duplicate singleton found: " + typeof(T));
             Destroy(gameObject);
         }
 
-        base.Awake();
+        Instance = this as T;
     }
 }
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Quest {
-    private readonly int currentStepIndex;
+    private int currentStepIndex;
     public QuestInfoSO info;
     public QuestState state;
 
@@ -11,17 +11,20 @@ public class Quest {
         currentStepIndex = 0;
     }
 
-    public void MoveToNextStep() { }
+    public void MoveToNextStep() {
+        currentStepIndex++;
+    }
 
     public void InstantiateCurrentQuestStep(Transform parentTransform) {
         GameObject questStepPrefab = GetCurrentQuestStepPrefab();
 
         if (questStepPrefab != null) {
-            Object.Instantiate(questStepPrefab, parentTransform);
+            GameObject questStep = Object.Instantiate(questStepPrefab, parentTransform);
+            questStep.GetComponent<QuestStep>().InitializeQuestStep(info.id);
         }
     }
 
-    private bool CurrentStepExists() {
+    public bool CurrentStepExists() {
         return currentStepIndex < info.questStepPrefabs.Length;
     }
 
