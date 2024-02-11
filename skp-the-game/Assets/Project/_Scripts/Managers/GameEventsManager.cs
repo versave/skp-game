@@ -2,11 +2,13 @@
 
 public class GameEventsManager : Singleton<GameEventsManager> {
     public GoldEvents goldEvents;
+    public InputEvents inputEvents;
     public QuestEvents questEvents;
 
     protected override void Awake() {
         base.Awake();
 
+        inputEvents = new InputEvents();
         goldEvents = new GoldEvents();
         questEvents = new QuestEvents();
     }

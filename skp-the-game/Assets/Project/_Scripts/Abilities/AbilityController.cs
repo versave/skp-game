@@ -3,35 +3,30 @@ using UnityEngine.InputSystem;
 
 public class AbilityController : MonoBehaviour {
     public AbilityBase ability;
+
+    private InputAction.CallbackContext abilityAction;
+
     private AbilityState abilityState = AbilityState.Ready;
 
     private float cooldownSeconds;
     private float durationSeconds;
-
-    private InputAction fire;
-    private PlayerInputActions playerControls;
-
-    private void Awake() {
-        playerControls = new PlayerInputActions();
-        fire = playerControls.Player.Fire;
-    }
 
     private void Update() {
         HandleAbilityState();
     }
 
     private void OnEnable() {
-        fire.Enable();
+        GameEventsManager.Instance.inputEvents.onAbilityUsed += SetAbilityAction;
     }
 
     private void OnDisable() {
-        fire.Disable();
+        GameEventsManager.Instance.inputEvents.onAbilityUsed -= SetAbilityAction;
     }
 
     private void HandleAbilityState() {
         switch (abilityState) {
             case AbilityState.Ready:
-                if (fire.triggered) {
+                if (abilityAction.performed) {
                     ability.Activate(gameObject);
                     abilityState = AbilityState.Active;
                     durationSeconds = ability.durationSeconds;
@@ -57,6 +52,10 @@ public class AbilityController : MonoBehaviour {
 
                 break;
         }
+    }
+
+    private void SetAbilityAction(InputAction.CallbackContext context) {
+        abilityAction = context;
     }
 }
 

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public class QuestPoint : MonoBehaviour {
@@ -10,33 +9,24 @@ public class QuestPoint : MonoBehaviour {
 
     private QuestState currentQuestState;
 
-    private InputAction interact;
 
     private bool isPlayerInTrigger;
-    private PlayerInputActions playerControls;
     private QuestIcon questIcon;
     private string questId;
 
     private void Awake() {
         questId = questInfoForPoint.id;
-
-        // todo: create an InputEvents class to handle all input events
-        playerControls = new PlayerInputActions();
-        interact = playerControls.Player.Interact;
-
         questIcon = GetComponentInChildren<QuestIcon>();
     }
 
     private void OnEnable() {
         GameEventsManager.Instance.questEvents.onQuestStateChange += QuestStateChange;
-        interact.Enable();
-        // todo: create an InputEvents class to handle all input events
-        interact.performed += OnPlayerInteract;
+        GameEventsManager.Instance.inputEvents.onInteract += OnPlayerInteract;
     }
 
     private void OnDisable() {
         GameEventsManager.Instance.questEvents.onQuestStateChange -= QuestStateChange;
-        interact.Enable();
+        GameEventsManager.Instance.inputEvents.onInteract -= OnPlayerInteract;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -58,7 +48,7 @@ public class QuestPoint : MonoBehaviour {
         }
     }
 
-    private void OnPlayerInteract(InputAction.CallbackContext context) {
+    private void OnPlayerInteract() {
         if (!isPlayerInTrigger) {
             return;
         }

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: CollectCoinsQuest2
   <displayName>k__BackingField: Collect the coins
-  <questPrerequisites>k__BackingField: []
+  <questPrerequisites>k__BackingField:
+  - {fileID: 11400000, guid: 45f48a5b3520c43cca57bb563b76bc39, type: 2}
   <questStepPrefabs>k__BackingField:
   - {fileID: 7732381437908601098, guid: f8eca6455fcf4474fa8f494d68d30a3e, type: 3}
   <goldReward>k__BackingField: 50
