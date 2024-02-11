@@ -112,8 +112,8 @@ public class QuestManager : MonoBehaviour {
     private void FinishQuest(string questId) {
         Quest quest = GetQuestById(questId);
 
-        ClaimRewards(quest);
         ChangeQuestState(quest.info.id, QuestState.Finished);
+        ClaimRewards(quest);
     }
 
     private void ClaimRewards(Quest quest) {

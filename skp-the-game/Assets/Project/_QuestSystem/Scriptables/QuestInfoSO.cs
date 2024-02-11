@@ -3,12 +3,13 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "QuestInfoSO", menuName = "QuestSystem/QuestInfoSO", order = 1)]
 public class QuestInfoSO : ScriptableObject {
-    [field: SerializeField] public string id { get; private set; }
-
     [field: Header("General")]
     [field: SerializeField]
-    public string displayName { get; private set; }
+    public string id { get; private set; }
 
+    [field: SerializeField] public string displayName { get; private set; }
+
+    // Other quests or other data types, like booleans that need to be completed before this quest can be started
     [field: Header("Requirements")]
     [field: SerializeField]
     public QuestInfoSO[] questPrerequisites { get; private set; }

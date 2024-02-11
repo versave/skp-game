@@ -7,8 +7,6 @@ public class GameEventsManager : Singleton<GameEventsManager> {
     protected override void Awake() {
         base.Awake();
 
-        // todo: fix singleton pattern
-
         goldEvents = new GoldEvents();
         questEvents = new QuestEvents();
     }

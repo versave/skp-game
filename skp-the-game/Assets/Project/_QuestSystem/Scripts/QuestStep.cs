@@ -9,8 +9,6 @@ public abstract class QuestStep : MonoBehaviour {
             return;
         }
 
-        Debug.Log("advancing quest");
-
         isFinished = true;
         GameEventsManager.Instance.questEvents.AdvanceQuest(questId);
         Destroy(gameObject);
