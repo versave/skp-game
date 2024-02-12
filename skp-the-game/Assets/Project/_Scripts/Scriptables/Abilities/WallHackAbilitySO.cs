@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/Wall Hack")]
-public class WallHackAbility : AbilityBase {
+public class WallHackAbilitySO : AbilityBaseSO {
     private CapsuleCollider2D capsuleCollider2D;
 
     public override void Reset(GameObject gameObject) {

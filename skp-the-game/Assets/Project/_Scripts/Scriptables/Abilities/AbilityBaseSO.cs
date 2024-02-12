@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AbilityBase : ScriptableObject {
+public class AbilityBaseSO : ScriptableObject {
     [field: SerializeField] public string abilityName { get; private set; }
     [field: SerializeField] public float durationSeconds { get; private set; }
     [field: SerializeField] public float cooldownSeconds { get; private set; }

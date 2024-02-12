@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/Speed Boost")]
-public class SpeedBoostAbility : AbilityBase {
+public class SpeedBoostAbilitySO : AbilityBaseSO {
     [SerializeField] private float speedBoost;
     private PlayerController playerController;
 

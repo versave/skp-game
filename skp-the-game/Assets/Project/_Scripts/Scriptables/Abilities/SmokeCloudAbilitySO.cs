@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/Smoke Cloud")]
-public class SmokeCloudAbility : AbilityBase {
+public class SmokeCloudAbilitySO : AbilityBaseSO {
     [SerializeField] private ParticleSystem smokeParticlePrefab;
     private ParticleSystem smokeParticleInstance;
 

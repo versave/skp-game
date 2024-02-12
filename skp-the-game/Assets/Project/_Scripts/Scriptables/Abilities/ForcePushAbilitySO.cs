@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/Force Push")]
-public class ForcePushAbility : AbilityBase {
+public class ForcePushAbilitySO : AbilityBaseSO {
     [SerializeField] private GameObject abilityPrefab;
     private GameObject instance;
 

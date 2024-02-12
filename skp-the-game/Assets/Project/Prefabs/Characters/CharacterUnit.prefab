@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6038428695975998606}
   - component: {fileID: 8563585421338384714}
   - component: {fileID: 6318918405696272441}
+  - component: {fileID: 8719266962174745200}
   m_Layer: 20
   m_Name: CharacterUnit
   m_TagString: NPC
@@ -33,7 +34,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3918698442714397216}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8603098959815320098
@@ -203,3 +205,107 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterId: 0
   animator: {fileID: 6038428695975998606}
+  characterSo: {fileID: 0}
+  quest: {fileID: 8719266962174745200}
+--- !u!114 &8719266962174745200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872199043775883053}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808461672c244e86a430fe365c1b3ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfoForPoint: {fileID: 0}
+  questIcon: {fileID: 7476496944056873635}
+  isStartPoint: 1
+  isFinishPoint: 1
+--- !u!1001 &2791697864805487775
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7367810320954280185}
+    m_Modifications:
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.805
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923617549471519408, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+        type: 3}
+      propertyPath: m_Name
+      value: QuestIcon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6d5761ea8c2f14796abc3b2df5178f8b, type: 3}
+--- !u!4 &3918698442714397216 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1214873564787551935, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2791697864805487775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7476496944056873635 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4719702253294790204, guid: 6d5761ea8c2f14796abc3b2df5178f8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2791697864805487775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d5ae83571f4e1e9acda424b237e5bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

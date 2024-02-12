@@ -1,22 +1,24 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class QuestPoint : MonoBehaviour {
-    [Header("Quest")] [SerializeField] private QuestInfoSO questInfoForPoint;
-
-    [Header("Config")] [SerializeField] private bool startPoint = true;
-    [SerializeField] private bool finishPoint = true;
+    public QuestInfoSO questInfoForPoint;
+    [SerializeField] private QuestIcon questIcon;
+    [SerializeField] private bool isStartPoint = true;
+    [SerializeField] private bool isFinishPoint = true;
 
     private QuestState currentQuestState;
 
-
     private bool isPlayerInTrigger;
-    private QuestIcon questIcon;
     private string questId;
 
-    private void Awake() {
+    private void Start() {
         questId = questInfoForPoint.id;
-        questIcon = GetComponentInChildren<QuestIcon>();
+        currentQuestState = questInfoForPoint.questStartingState;
+
+        if (currentQuestState != QuestState.RequirementsNotMet) {
+            questIcon.SetState(currentQuestState, isStartPoint, isFinishPoint);
+        }
     }
 
     private void OnEnable() {
@@ -44,7 +46,7 @@ public class QuestPoint : MonoBehaviour {
     private void QuestStateChange(Quest quest) {
         if (quest.info.id == questId) {
             currentQuestState = quest.state;
-            questIcon.SetState(currentQuestState, startPoint, finishPoint);
+            questIcon.SetState(currentQuestState, isStartPoint, isFinishPoint);
         }
     }
 
@@ -53,9 +55,11 @@ public class QuestPoint : MonoBehaviour {
             return;
         }
 
-        if (startPoint && currentQuestState == QuestState.CanStart) {
+        Debug.Log("Player interacted with quest point" + questId + " with state " + currentQuestState);
+
+        if (isStartPoint && currentQuestState == QuestState.CanStart) {
             GameEventsManager.Instance.questEvents.StartQuest(questId);
-        } else if (finishPoint && currentQuestState == QuestState.CanFinish) {
+        } else if (isFinishPoint && currentQuestState == QuestState.CanFinish) {
             GameEventsManager.Instance.questEvents.FinishQuest(questId);
         }
     }

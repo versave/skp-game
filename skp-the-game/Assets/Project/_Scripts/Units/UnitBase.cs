@@ -3,13 +3,19 @@ using UnityEngine;
 public abstract class UnitBase : MonoBehaviour {
     public UniqueCharacterId characterId;
     public Animator animator;
-    public Character character;
+    public CharacterSO characterSo;
+    public QuestPoint quest;
 
     protected virtual void AssignCharacterValues() {
-        gameObject.name = character.displayName;
-        gameObject.transform.position = character.spawnPosition;
+        gameObject.name = characterSo.displayName;
+        gameObject.transform.position = characterSo.spawnPosition;
 
-        characterId = character.characterId;
-        animator.runtimeAnimatorController = character.animatorController;
+        characterId = characterSo.characterId;
+        animator.runtimeAnimatorController = characterSo.animatorController;
+
+        if (characterSo.questInfo != null) {
+            quest.enabled = true;
+            quest.questInfoForPoint = characterSo.questInfo;
+        }
     }
 }

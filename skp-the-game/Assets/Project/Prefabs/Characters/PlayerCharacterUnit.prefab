@@ -73,9 +73,15 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8719266962174745200, guid: 055c081ce9d9b4e128f405f108f5ee54,
+        type: 3}
+      propertyPath: questIcon
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6318918405696272441, guid: 055c081ce9d9b4e128f405f108f5ee54, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5092369484473927215, guid: 055c081ce9d9b4e128f405f108f5ee54, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4872199043775883053, guid: 055c081ce9d9b4e128f405f108f5ee54,
@@ -128,6 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterId: 0
   animator: {fileID: 6367874870379144916}
+  characterSo: {fileID: 0}
+  quest: {fileID: 0}
   abilityController: {fileID: 1247689547936005257}
 --- !u!50 &4990456267669252173
 Rigidbody2D:

@@ -28,28 +28,28 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     private void RenderCharacterButtons() {
-        List<Character> charactersList = ResourceSystem.Instance.characters;
+        List<CharacterSO> charactersList = ResourceSystem.Instance.charactersList;
 
-        foreach (Character character in charactersList) {
+        foreach (CharacterSO character in charactersList) {
             CreateCharacterButton(character);
         }
     }
 
-    private void CreateCharacterButton(Character character) {
+    private void CreateCharacterButton(CharacterSO characterSo) {
         GameObject characterObj = Instantiate(characterButtonPrefab, characterGrid.transform);
         Button buttonComponent = characterObj.GetComponent<Button>();
         Image imageComponent = characterObj.GetComponentsInChildren<Image>()[1];
         TextMeshProUGUI textComponent = characterObj.GetComponentInChildren<TextMeshProUGUI>();
 
-        buttonComponent.name = character.displayName;
-        imageComponent.sprite = character.menuSprite;
-        textComponent.text = character.displayName;
+        buttonComponent.name = characterSo.displayName;
+        imageComponent.sprite = characterSo.menuSprite;
+        textComponent.text = characterSo.displayName;
 
-        buttonComponent.onClick.AddListener(() => OnCharacterButtonClick(character));
+        buttonComponent.onClick.AddListener(() => OnCharacterButtonClick(characterSo));
     }
 
-    private void OnCharacterButtonClick(Character character) {
-        GameManager.Instance.selectedCharacterId = character.characterId;
+    private void OnCharacterButtonClick(CharacterSO characterSo) {
+        GameManager.Instance.selectedCharacterId = characterSo.characterId;
         GameManager.Instance.LoadScene(Scenes.Game);
     }
 }

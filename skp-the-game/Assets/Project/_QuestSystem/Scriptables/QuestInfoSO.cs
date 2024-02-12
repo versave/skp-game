@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "QuestInfoSO", menuName = "QuestSystem/QuestInfoSO", order = 1)]
+[CreateAssetMenu(fileName = "QuestInfoSO", menuName = "Quest System/Quest Info", order = 1)]
 public class QuestInfoSO : ScriptableObject {
     [field: Header("General")]
     [field: SerializeField]
@@ -12,15 +12,15 @@ public class QuestInfoSO : ScriptableObject {
     // Other quests or other data types, like booleans that need to be completed before this quest can be started
     [field: Header("Requirements")]
     [field: SerializeField]
-    public QuestInfoSO[] questPrerequisites { get; private set; }
+    public QuestState questStartingState { get; private set; } = QuestState.RequirementsNotMet;
+
+    [field: SerializeField] public QuestInfoSO[] questPrerequisites { get; private set; }
 
     [field: Header("Steps")]
     [field: SerializeField]
-    public GameObject[] questStepPrefabs { get; private set; }
+    public QuestStepBase[] questStepPrefabs { get; private set; }
 
-    [field: Header("Rewards")]
-    [field: SerializeField]
-    public int goldReward { get; private set; }
+    // Rewards can be added here, like gold, items, etc.
 
     // Matches the id to the name of the object / file
     private void OnValidate() {

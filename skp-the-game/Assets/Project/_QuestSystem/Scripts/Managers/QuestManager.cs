@@ -1,19 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-// todo: It's pretty much a resource system, but for quests. Maybe combine with the existing resource system?
 public class QuestManager : MonoBehaviour {
-    private Dictionary<string, Quest> questMap;
-
-    private void Awake() {
-        questMap = CreateQuestMap();
-    }
-
     private void Start() {
-        // Broadcast the initial state of all quests on startup
-        foreach (Quest quest in questMap.Values) {
-            GameEventsManager.Instance.questEvents.QuestStateChange(quest);
-        }
+        BroadcastInitialQuestState();
     }
 
     private void Update() {
@@ -30,21 +19,6 @@ public class QuestManager : MonoBehaviour {
         GameEventsManager.Instance.questEvents.onStartQuest -= StartQuest;
         GameEventsManager.Instance.questEvents.onAdvanceQuest -= AdvanceQuest;
         GameEventsManager.Instance.questEvents.onFinishQuest -= FinishQuest;
-    }
-
-    private Dictionary<string, Quest> CreateQuestMap() {
-        QuestInfoSO[] allQuests = Resources.LoadAll<QuestInfoSO>("Quests");
-        Dictionary<string, Quest> idToQuestMap = new();
-
-        foreach (QuestInfoSO questInfo in allQuests) {
-            if (idToQuestMap.ContainsKey(questInfo.id)) {
-                Debug.LogError("Duplicate quest ID found: " + questInfo.id);
-            }
-
-            idToQuestMap.Add(questInfo.id, new Quest(questInfo));
-        }
-
-        return idToQuestMap;
     }
 
     private void ChangeQuestState(string id, QuestState state) {
@@ -73,24 +47,16 @@ public class QuestManager : MonoBehaviour {
 
     private void ListenForQuestRequirementsMet() {
         // Maybe change this up to not be a for each in Update, but rather to be ran on event
-        foreach (Quest quest in questMap.Values) {
+        foreach (Quest quest in ResourceSystem.Instance.questsList) {
             if (quest.state == QuestState.RequirementsNotMet && CheckRequirementsMet(quest)) {
                 ChangeQuestState(quest.info.id, QuestState.CanStart);
             }
         }
     }
 
-    private Quest GetQuestById(string id) {
-        if (questMap.ContainsKey(id)) {
-            return questMap[id];
-        }
-
-        Debug.LogError("Quest not found: " + id);
-        return null;
-    }
-
     private void StartQuest(string questId) {
         Quest quest = GetQuestById(questId);
+
         quest.InstantiateCurrentQuestStep(transform);
         ChangeQuestState(quest.info.id, QuestState.InProgress);
     }
@@ -98,7 +64,6 @@ public class QuestManager : MonoBehaviour {
     private void AdvanceQuest(string questId) {
         Quest quest = GetQuestById(questId);
 
-        // move to next step
         quest.MoveToNextStep();
 
         if (quest.CurrentStepExists()) {
@@ -117,6 +82,17 @@ public class QuestManager : MonoBehaviour {
     }
 
     private void ClaimRewards(Quest quest) {
-        GameEventsManager.Instance.goldEvents.RewardGold(quest.info.goldReward);
+        Debug.Log("Quest finished! Claiming rewards...");
+        // Reward the player with specified rewards from the quest or something else
+    }
+
+    private void BroadcastInitialQuestState() {
+        foreach (Quest quest in ResourceSystem.Instance.questsList) {
+            GameEventsManager.Instance.questEvents.QuestStateChange(quest);
+        }
+    }
+
+    private Quest GetQuestById(string id) {
+        return ResourceSystem.Instance.GetQuestById(id);
     }
 }

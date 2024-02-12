@@ -13,21 +13,21 @@ public class UnitManager : MonoBehaviour {
     }
 
     private void SpawnPlayer() {
-        Character playerCharacter = ResourceSystem.Instance.GetCharacter(playerId);
+        CharacterSO playerCharacterSo = ResourceSystem.Instance.GetCharacter(playerId);
         PlayerCharacterUnit playerObj = Instantiate(playerCharacterUnitPrefab, transform);
-        playerObj.character = playerCharacter;
+        playerObj.characterSo = playerCharacterSo;
     }
 
     private void SpawnNpcs() {
-        foreach (Character character in ResourceSystem.Instance.characters) {
+        foreach (CharacterSO character in ResourceSystem.Instance.charactersList) {
             if (character.characterId != playerId) {
                 SpawnNpcCharacter(character);
             }
         }
     }
 
-    private void SpawnNpcCharacter(Character character) {
+    private void SpawnNpcCharacter(CharacterSO characterSo) {
         CharacterUnit npcObj = Instantiate(characterPrefab, transform);
-        npcObj.character = character;
+        npcObj.characterSo = characterSo;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class AbilityController : MonoBehaviour {
-    public AbilityBase ability;
+    public AbilityBaseSO ability;
 
     private InputAction.CallbackContext abilityAction;
 

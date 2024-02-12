@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef737f65ef554bb7a8509ae1dcabfc20, type: 3}
-  m_Name: CollectCoinsQuest
+  m_Name: FetchCokeQuest
   m_EditorClassIdentifier: 
-  <id>k__BackingField: CollectCoinsQuest
-  <displayName>k__BackingField: Collect the coins
-  <questStartingState>k__BackingField: 0
+  <id>k__BackingField: FetchCokeQuest
+  <displayName>k__BackingField: Fetch Coke
+  <questStartingState>k__BackingField: 1
   <questPrerequisites>k__BackingField: []
-  <questStepPrefabs>k__BackingField:
-  - {fileID: -8323788020462248421, guid: f8eca6455fcf4474fa8f494d68d30a3e, type: 3}
+  <questStepPrefabs>k__BackingField: []

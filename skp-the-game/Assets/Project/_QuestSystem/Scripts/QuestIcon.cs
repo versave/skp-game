@@ -6,11 +6,12 @@ public class QuestIcon : MonoBehaviour {
     [SerializeField] private GameObject inProgressIcon;
     [SerializeField] private GameObject canFinishIcon;
 
+    private void Start() {
+        DisableIcons();
+    }
+
     public void SetState(QuestState newState, bool startPoint, bool finishPoint) {
-        requirementsNotMetIcon.SetActive(false);
-        canStartIcon.SetActive(false);
-        inProgressIcon.SetActive(false);
-        canFinishIcon.SetActive(false);
+        DisableIcons();
 
         switch (newState) {
             case QuestState.RequirementsNotMet:
@@ -43,5 +44,12 @@ public class QuestIcon : MonoBehaviour {
                 Debug.LogError("Invalid quest state: " + newState);
                 break;
         }
+    }
+
+    private void DisableIcons() {
+        requirementsNotMetIcon.SetActive(false);
+        canStartIcon.SetActive(false);
+        inProgressIcon.SetActive(false);
+        canFinishIcon.SetActive(false);
     }
 }

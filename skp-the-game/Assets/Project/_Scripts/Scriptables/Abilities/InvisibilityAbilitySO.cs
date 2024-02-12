@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/Invisibility")]
-public class InvisibilityAbility : AbilityBase {
+public class InvisibilityAbilitySO : AbilityBaseSO {
     [SerializeField] private float fadeDuration = 1.0f;
     private InvisibilityHandler invisibilityHandler;
     private SpriteRenderer spriteRenderer;

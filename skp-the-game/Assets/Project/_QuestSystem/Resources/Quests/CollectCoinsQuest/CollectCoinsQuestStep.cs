@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CollectCoinsQuestStep : QuestStep {
+public class CollectCoinsQuestStep : QuestStepBase {
     private readonly int coinsToCollect = 5;
     private int coinsCollected;
 

@@ -14,6 +14,6 @@ public class PlayerCharacterUnit : UnitBase {
         base.AssignCharacterValues();
 
         gameObject.name = "Player";
-        abilityController.ability = character.ability;
+        abilityController.ability = characterSo.ability;
     }
 }
