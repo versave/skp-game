@@ -8,7 +8,6 @@ public abstract class UnitBase : MonoBehaviour {
 
     protected virtual void AssignCharacterValues() {
         gameObject.name = characterSo.displayName;
-        gameObject.transform.position = characterSo.spawnPosition;
 
         characterId = characterSo.characterId;
         animator.runtimeAnimatorController = characterSo.animatorController;
@@ -16,6 +15,12 @@ public abstract class UnitBase : MonoBehaviour {
         if (characterSo.questInfo != null) {
             quest.enabled = true;
             quest.questInfoForPoint = characterSo.questInfo;
+        }
+    }
+
+    public void SelfDestroyOnPlayerPicked() {
+        if (GameManager.Instance.selectedCharacterId == characterSo.characterId) {
+            Destroy(gameObject);
         }
     }
 }

@@ -13,7 +13,8 @@ public class PlayerCharacterUnit : UnitBase {
     protected override void AssignCharacterValues() {
         base.AssignCharacterValues();
 
-        gameObject.name = "Player";
+        gameObject.name = GameTags.Player;
+        gameObject.transform.position = characterSo.spawnPosition;
         abilityController.ability = characterSo.ability;
     }
 }

@@ -11,7 +11,7 @@ public class ForcePushHandler : MonoBehaviour {
     [SerializeField] private float fadeOutDuration = 0.3f;
 
 
-    private readonly string pushedTag = GameTags.NPC;
+    private readonly string pushedTag = GameTags.Npc;
     private float currentRadius;
     private float growthSpeed;
     private bool isFadingOut;

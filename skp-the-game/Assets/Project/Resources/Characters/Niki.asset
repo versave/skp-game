@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <characterId>k__BackingField: 5
   <displayName>k__BackingField: Niki
+  <dialogueText>k__BackingField: 1111
   <menuSprite>k__BackingField: {fileID: 21300000, guid: c16da33e0221e4899ad5099f7fcad2c7,
     type: 3}
-  <spawnPosition>k__BackingField: {x: 7.14, y: 1.74, z: 0}
+  <spawnPosition>k__BackingField: {x: 7, y: 8.1, z: 1}
   <animatorController>k__BackingField: {fileID: 9100000, guid: 6c414f6652a9c43a48e927d09dc52a1a,
     type: 2}
   <ability>k__BackingField: {fileID: 11400000, guid: b1d2efdc4f91c4f73805f9d296aab715,

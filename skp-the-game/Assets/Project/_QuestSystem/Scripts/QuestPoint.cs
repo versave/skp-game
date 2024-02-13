@@ -32,13 +32,13 @@ public class QuestPoint : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
+        if (other.CompareTag(GameTags.Player)) {
             isPlayerInTrigger = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
+        if (other.CompareTag(GameTags.Player)) {
             isPlayerInTrigger = false;
         }
     }

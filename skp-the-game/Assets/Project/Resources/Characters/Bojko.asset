@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <characterId>k__BackingField: 1
   <displayName>k__BackingField: Bojko
+  <dialogueText>k__BackingField: Az sum bojko
   <menuSprite>k__BackingField: {fileID: 21300000, guid: 33a48356a6dee475aa802eec622dc12a,
     type: 3}
-  <spawnPosition>k__BackingField: {x: 3.28, y: -0.11, z: 0}
+  <spawnPosition>k__BackingField: {x: -1.11, y: 8.1, z: 1}
   <animatorController>k__BackingField: {fileID: 9100000, guid: 7f1eec8100a784bd98e8e5840b4a9f8f,
     type: 2}
   <ability>k__BackingField: {fileID: 11400000, guid: c69962179094142688264cea4db52282,

@@ -1,8 +1,10 @@
 // Note: Script execution order is changed for this class, so subscribers don't run into a null exception
 
 public class GameEventsManager : Singleton<GameEventsManager> {
+    public DialogueEvents dialogueEvents;
     public GoldEvents goldEvents;
     public InputEvents inputEvents;
+    public InventoryEvents inventoryEvents;
     public QuestEvents questEvents;
 
     protected override void Awake() {
@@ -11,5 +13,7 @@ public class GameEventsManager : Singleton<GameEventsManager> {
         inputEvents = new InputEvents();
         goldEvents = new GoldEvents();
         questEvents = new QuestEvents();
+        inventoryEvents = new InventoryEvents();
+        dialogueEvents = new DialogueEvents();
     }
 }
