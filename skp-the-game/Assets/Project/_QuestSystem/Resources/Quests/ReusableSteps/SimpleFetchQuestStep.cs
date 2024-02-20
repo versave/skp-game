@@ -1,4 +1,8 @@
-public class FetchCokeQuestStep : QuestStepBase {
+using UnityEngine;
+
+public class SimpleFetchQuestStep : QuestStepBase {
+    [SerializeField] private InventoryItemType fetchItemType;
+
     private void OnEnable() {
         GameEventsManager.Instance.inventoryEvents.onItemAdded += OnItemAdded;
     }
@@ -8,7 +12,7 @@ public class FetchCokeQuestStep : QuestStepBase {
     }
 
     private void OnItemAdded(InventoryItemType itemType, int amount) {
-        if (itemType == InventoryItemType.Coke) {
+        if (itemType == fetchItemType) {
             FinishQuestStep();
         }
     }

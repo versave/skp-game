@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class CollectibleItemBase : MonoBehaviour {
-    [SerializeField] private InventoryItemType itemType = InventoryItemType.Coke;
-    [SerializeField] private int itemQuantity;
+public abstract class CollectibleItemBase : MonoBehaviour {
+    [SerializeField] protected InventoryItemType itemType;
+    [SerializeField] protected int itemQuantity;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag(GameTags.Player)) {

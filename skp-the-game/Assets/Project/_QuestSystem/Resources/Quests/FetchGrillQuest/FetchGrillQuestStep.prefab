@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7090013873624343641}
   - component: {fileID: 4776346014392099019}
   m_Layer: 0
-  m_Name: FetchCokeQuestStep
+  m_Name: FetchGrillQuestStep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f209f9b7ebe34468badb5fb134ced947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fetchItemType: 1
+  fetchItemType: 2

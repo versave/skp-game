@@ -1,4 +1,5 @@
 public enum InventoryItemType {
     Gold,
-    Coke
+    Coke,
+    Grill
 }

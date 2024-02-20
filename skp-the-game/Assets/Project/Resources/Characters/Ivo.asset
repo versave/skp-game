@@ -21,4 +21,5 @@ MonoBehaviour:
   <animatorController>k__BackingField: {fileID: 9100000, guid: 3456aa47e49904c38bfae25ab60957d0,
     type: 2}
   <ability>k__BackingField: {fileID: 0}
-  <questInfo>k__BackingField: {fileID: 0}
+  <questInfo>k__BackingField: {fileID: 11400000, guid: 6110d272bf524459fb2690faea7480eb,
+    type: 2}
