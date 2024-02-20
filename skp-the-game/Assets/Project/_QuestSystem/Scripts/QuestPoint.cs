@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
 public class QuestPoint : MonoBehaviour {
     public QuestInfoSO questInfoForPoint;
     [SerializeField] private QuestIcon questIcon;
@@ -8,8 +7,6 @@ public class QuestPoint : MonoBehaviour {
     [SerializeField] private bool isFinishPoint = true;
 
     private QuestState currentQuestState;
-
-    private bool isPlayerInTrigger;
     private string questId;
 
     private void Start() {
@@ -23,24 +20,14 @@ public class QuestPoint : MonoBehaviour {
 
     private void OnEnable() {
         GameEventsManager.Instance.questEvents.onQuestStateChange += QuestStateChange;
-        GameEventsManager.Instance.inputEvents.onInteract += OnPlayerInteract;
+        GameEventsManager.Instance.dialogueEvents.onQuestButtonClick += OnPlayerQuestStart;
+        GameEventsManager.Instance.dialogueEvents.onQuestFinishButtonClick += OnPlayerFinishQuest;
     }
 
     private void OnDisable() {
         GameEventsManager.Instance.questEvents.onQuestStateChange -= QuestStateChange;
-        GameEventsManager.Instance.inputEvents.onInteract -= OnPlayerInteract;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag(GameTags.Player)) {
-            isPlayerInTrigger = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag(GameTags.Player)) {
-            isPlayerInTrigger = false;
-        }
+        GameEventsManager.Instance.dialogueEvents.onQuestButtonClick -= OnPlayerQuestStart;
+        GameEventsManager.Instance.dialogueEvents.onQuestFinishButtonClick -= OnPlayerFinishQuest;
     }
 
     private void QuestStateChange(Quest quest) {
@@ -50,16 +37,24 @@ public class QuestPoint : MonoBehaviour {
         }
     }
 
-    private void OnPlayerInteract() {
-        if (!isPlayerInTrigger) {
+    private void OnPlayerQuestStart(string questId) {
+        if (questId != this.questId) {
             return;
         }
 
-        Debug.Log("Player interacted with quest point" + questId + " with state " + currentQuestState);
+        bool canStartQuest = currentQuestState == QuestState.CanStart || currentQuestState == QuestState.PreStart;
 
-        if (isStartPoint && currentQuestState == QuestState.CanStart) {
+        if (isStartPoint && canStartQuest) {
             GameEventsManager.Instance.questEvents.StartQuest(questId);
-        } else if (isFinishPoint && currentQuestState == QuestState.CanFinish) {
+        }
+    }
+
+    private void OnPlayerFinishQuest(string questId) {
+        if (questId != this.questId) {
+            return;
+        }
+
+        if (isFinishPoint && currentQuestState == QuestState.CanFinish) {
             GameEventsManager.Instance.questEvents.FinishQuest(questId);
         }
     }

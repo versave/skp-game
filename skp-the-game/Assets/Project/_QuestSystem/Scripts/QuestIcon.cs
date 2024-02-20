@@ -20,6 +20,7 @@ public class QuestIcon : MonoBehaviour {
                 }
 
                 break;
+            case QuestState.PreStart:
             case QuestState.CanStart:
                 if (startPoint) {
                     canStartIcon.SetActive(true);

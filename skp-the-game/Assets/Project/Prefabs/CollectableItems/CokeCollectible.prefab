@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7306330862276498547}
   - component: {fileID: 7384574070625105127}
   - component: {fileID: 3920526491215072736}
-  - component: {fileID: 6130211219480258710}
+  - component: {fileID: 2679949699618429148}
   m_Layer: 0
   m_Name: CokeCollectible
   m_TagString: Untagged
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!114 &6130211219480258710
+--- !u!114 &2679949699618429148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,8 +130,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8083950048406323636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbfb33b026594c4fa48b8ffe5fdc7274, type: 3}
+  m_Script: {fileID: 11500000, guid: f7161f1d0c604b19a1c816fa0511db8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
   itemQuantity: 1
+  requiredGold: 2

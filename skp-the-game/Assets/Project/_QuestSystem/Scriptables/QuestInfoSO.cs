@@ -9,6 +9,15 @@ public class QuestInfoSO : ScriptableObject {
 
     [field: SerializeField] public string displayName { get; private set; }
 
+    [field: TextArea]
+    [field: SerializeField]
+    public string description { get; private set; }
+
+    [field: TextArea]
+    [field: SerializeField]
+    public string finishDescription { get; private set; }
+
+
     // Other quests or other data types, like booleans that need to be completed before this quest can be started
     [field: Header("Requirements")]
     [field: SerializeField]

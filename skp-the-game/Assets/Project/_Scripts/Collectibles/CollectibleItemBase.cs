@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public class CollectibleItem : MonoBehaviour {
-    [SerializeField] private InventoryItemType itemType;
+public class CollectibleItemBase : MonoBehaviour {
+    [SerializeField] private InventoryItemType itemType = InventoryItemType.Coke;
     [SerializeField] private int itemQuantity;
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -10,7 +10,7 @@ public class CollectibleItem : MonoBehaviour {
         }
     }
 
-    private void CollectItem() {
+    protected virtual void CollectItem() {
         InventoryManager.Instance.AddItem(itemType, itemQuantity);
         Destroy(gameObject);
     }

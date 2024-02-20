@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour {
     private void Start() {
         BroadcastInitialQuestState();
+        PreStartQuests();
     }
 
     private void Update() {
@@ -57,7 +60,10 @@ public class QuestManager : MonoBehaviour {
     private void StartQuest(string questId) {
         Quest quest = GetQuestById(questId);
 
-        quest.InstantiateCurrentQuestStep(transform);
+        if (quest.state == QuestState.CanStart) {
+            quest.InstantiateCurrentQuestStep(transform);
+        }
+
         ChangeQuestState(quest.info.id, QuestState.InProgress);
     }
 
@@ -94,5 +100,15 @@ public class QuestManager : MonoBehaviour {
 
     private Quest GetQuestById(string id) {
         return ResourceSystem.Instance.GetQuestById(id);
+    }
+
+    private void PreStartQuests() {
+        List<Quest> preStartQuests =
+            ResourceSystem.Instance.questsList.Where(quest => quest.info.questStartingState == QuestState.PreStart)
+                .ToList();
+
+        foreach (Quest quest in preStartQuests) {
+            quest.InstantiateCurrentQuestStep(transform);
+        }
     }
 }
