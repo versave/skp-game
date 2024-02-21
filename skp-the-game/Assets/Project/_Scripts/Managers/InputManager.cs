@@ -18,4 +18,10 @@ public class InputManager : MonoBehaviour {
     public void AbilityUsed(InputAction.CallbackContext context) {
         GameEventsManager.Instance.inputEvents.AbilityUsed(context);
     }
+
+    public void QuestJournalToggled(InputAction.CallbackContext context) {
+        if (context.started) {
+            GameEventsManager.Instance.inputEvents.QuestJournalToggled();
+        }
+    }
 }

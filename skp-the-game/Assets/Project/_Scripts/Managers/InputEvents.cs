@@ -8,6 +8,7 @@ public class InputEvents {
     public Action<InputAction.CallbackContext> onAbilityUsed;
     public Action onInteract;
     public Action<Vector2> onMovePressed;
+    public Action onQuestJournalToggled;
 
     public void MovePressed(Vector2 direction) {
         if (invokePlayerActions) {
@@ -26,6 +27,12 @@ public class InputEvents {
     public void AbilityUsed(InputAction.CallbackContext context) {
         if (invokePlayerActions) {
             onAbilityUsed?.Invoke(context);
+        }
+    }
+
+    public void QuestJournalToggled() {
+        if (invokePlayerActions) {
+            onQuestJournalToggled?.Invoke();
         }
     }
 

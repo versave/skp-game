@@ -3,6 +3,8 @@ using System.Linq;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour {
+    private readonly List<Quest> activeQuests = new();
+
     private void Start() {
         BroadcastInitialQuestState();
         PreStartQuests();
@@ -27,6 +29,8 @@ public class QuestManager : MonoBehaviour {
     private void ChangeQuestState(string id, QuestState state) {
         Quest quest = GetQuestById(id);
         quest.state = state;
+
+        UpdateActiveQuests(quest);
         GameEventsManager.Instance.questEvents.QuestStateChange(quest);
     }
 
@@ -110,5 +114,19 @@ public class QuestManager : MonoBehaviour {
         foreach (Quest quest in preStartQuests) {
             quest.InstantiateCurrentQuestStep(transform);
         }
+    }
+
+    private void UpdateActiveQuests(Quest quest) {
+        if (quest.state == QuestState.PreStart || quest.state == QuestState.CanStart) {
+            return;
+        }
+
+        if (activeQuests.Contains(quest)) {
+            activeQuests[activeQuests.IndexOf(quest)].state = quest.state;
+        } else {
+            activeQuests.Add(quest);
+        }
+
+        GameEventsManager.Instance.questEvents.ActiveQuestsChange(activeQuests);
     }
 }

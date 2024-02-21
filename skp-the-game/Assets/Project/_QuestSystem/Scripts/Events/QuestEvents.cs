@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 
 public class QuestEvents {
+    public Action<List<Quest>> onActiveQuestsChange;
     public Action<string> onAdvanceQuest;
     public Action<string> onFinishQuest;
     public Action<Quest> onQuestStateChange;
@@ -20,5 +22,9 @@ public class QuestEvents {
 
     public void QuestStateChange(Quest quest) {
         onQuestStateChange?.Invoke(quest);
+    }
+
+    public void ActiveQuestsChange(List<Quest> quests) {
+        onActiveQuestsChange?.Invoke(quests);
     }
 }
