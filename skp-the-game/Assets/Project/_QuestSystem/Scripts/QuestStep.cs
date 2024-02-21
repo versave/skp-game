@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class QuestStepBase : MonoBehaviour {
     private bool isFinished;
-    private string questId;
+    protected string questId;
 
     protected void FinishQuestStep() {
         if (isFinished) {

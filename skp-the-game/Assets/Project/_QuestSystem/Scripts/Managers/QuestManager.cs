@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour {
@@ -7,7 +6,6 @@ public class QuestManager : MonoBehaviour {
 
     private void Start() {
         BroadcastInitialQuestState();
-        PreStartQuests();
     }
 
     private void Update() {
@@ -15,12 +13,14 @@ public class QuestManager : MonoBehaviour {
     }
 
     private void OnEnable() {
+        GameEventsManager.Instance.questEvents.onPreStartQuest += PreStartQuest;
         GameEventsManager.Instance.questEvents.onStartQuest += StartQuest;
         GameEventsManager.Instance.questEvents.onAdvanceQuest += AdvanceQuest;
         GameEventsManager.Instance.questEvents.onFinishQuest += FinishQuest;
     }
 
     private void OnDisable() {
+        GameEventsManager.Instance.questEvents.onPreStartQuest -= PreStartQuest;
         GameEventsManager.Instance.questEvents.onStartQuest -= StartQuest;
         GameEventsManager.Instance.questEvents.onAdvanceQuest -= AdvanceQuest;
         GameEventsManager.Instance.questEvents.onFinishQuest -= FinishQuest;
@@ -106,12 +106,10 @@ public class QuestManager : MonoBehaviour {
         return ResourceSystem.Instance.GetQuestById(id);
     }
 
-    private void PreStartQuests() {
-        List<Quest> preStartQuests =
-            ResourceSystem.Instance.questsList.Where(quest => quest.info.questStartingState == QuestState.PreStart)
-                .ToList();
+    private void PreStartQuest(string questId) {
+        Quest quest = GetQuestById(questId);
 
-        foreach (Quest quest in preStartQuests) {
+        if (quest.state == QuestState.PreStart) {
             quest.InstantiateCurrentQuestStep(transform);
         }
     }

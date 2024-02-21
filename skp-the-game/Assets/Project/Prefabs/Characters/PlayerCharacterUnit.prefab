@@ -135,7 +135,7 @@ MonoBehaviour:
   characterId: 0
   animator: {fileID: 6367874870379144916}
   characterSo: {fileID: 0}
-  quest: {fileID: 0}
+  questPoint: {fileID: 8255939835131381802}
   abilityController: {fileID: 1247689547936005257}
 --- !u!50 &4990456267669252173
 Rigidbody2D:
@@ -183,3 +183,15 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 834277070077514330}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8255939835131381802 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8719266962174745200, guid: 055c081ce9d9b4e128f405f108f5ee54,
+    type: 3}
+  m_PrefabInstance: {fileID: 834277070077514330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5192216769409529207}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808461672c244e86a430fe365c1b3ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

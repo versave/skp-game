@@ -14,8 +14,10 @@ public class QuestPoint : MonoBehaviour {
         currentQuestState = questInfoForPoint.questStartingState;
 
         if (currentQuestState != QuestState.RequirementsNotMet) {
-            questIcon.SetState(currentQuestState, isStartPoint, isFinishPoint);
+            SetQuestIconState();
         }
+
+        TryPreStartQuest();
     }
 
     private void OnEnable() {
@@ -33,7 +35,7 @@ public class QuestPoint : MonoBehaviour {
     private void QuestStateChange(Quest quest) {
         if (quest.info.id == questId) {
             currentQuestState = quest.state;
-            questIcon.SetState(currentQuestState, isStartPoint, isFinishPoint);
+            SetQuestIconState();
         }
     }
 
@@ -56,6 +58,18 @@ public class QuestPoint : MonoBehaviour {
 
         if (isFinishPoint && currentQuestState == QuestState.CanFinish) {
             GameEventsManager.Instance.questEvents.FinishQuest(questId);
+        }
+    }
+
+    private void TryPreStartQuest() {
+        if (isStartPoint && currentQuestState == QuestState.PreStart) {
+            GameEventsManager.Instance.questEvents.PreStartQuest(questId);
+        }
+    }
+
+    private void SetQuestIconState() {
+        if (questIcon) {
+            questIcon.SetState(currentQuestState, isStartPoint, isFinishPoint);
         }
     }
 }

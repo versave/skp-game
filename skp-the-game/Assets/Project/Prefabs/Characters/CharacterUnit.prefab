@@ -206,7 +206,7 @@ MonoBehaviour:
   characterId: 0
   animator: {fileID: 6038428695975998606}
   characterSo: {fileID: 0}
-  quest: {fileID: 8719266962174745200}
+  questPoint: {fileID: 8719266962174745200}
 --- !u!114 &8719266962174745200
 MonoBehaviour:
   m_ObjectHideFlags: 0

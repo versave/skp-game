@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class SimpleFetchQuestStep : QuestStepBase {
-    [SerializeField] private InventoryItemType fetchItemType;
+    [SerializeField] protected InventoryItemType fetchItemType;
 
     private void OnEnable() {
         GameEventsManager.Instance.inventoryEvents.onItemAdded += OnItemAdded;
@@ -11,7 +11,7 @@ public class SimpleFetchQuestStep : QuestStepBase {
         GameEventsManager.Instance.inventoryEvents.onItemAdded -= OnItemAdded;
     }
 
-    private void OnItemAdded(InventoryItemType itemType, int amount) {
+    protected virtual void OnItemAdded(InventoryItemType itemType, int amount) {
         if (itemType == fetchItemType) {
             FinishQuestStep();
         }

@@ -13,7 +13,8 @@ public class CharacterSO : ScriptableObject {
     [field: SerializeField] public Vector3 spawnPosition { get; private set; }
     [field: SerializeField] public RuntimeAnimatorController animatorController { get; private set; }
     [field: SerializeField] public AbilityBaseSO ability { get; private set; }
-    [field: SerializeField] public QuestInfoSO questInfo { get; private set; }
+    [field: SerializeField] public QuestInfoSO questGiverInfo { get; private set; }
+    [field: SerializeField] public QuestInfoSO personalQuestInfo { get; private set; }
 }
 
 public enum UniqueCharacterId {

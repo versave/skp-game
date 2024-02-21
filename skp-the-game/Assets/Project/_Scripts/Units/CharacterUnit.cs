@@ -32,9 +32,24 @@ public class CharacterUnit : UnitBase {
         }
     }
 
+    protected override void AssignCharacterValues() {
+        base.AssignCharacterValues();
+        SetQuestGiver();
+    }
+
     private void OnPlayerInteract() {
         if (isPlayerInTrigger) {
             GameEventsManager.Instance.dialogueEvents.InitiateDialogue(characterSo);
+        }
+    }
+
+    private void SetQuestGiver() {
+        bool hasQuestGiver = characterSo.questGiverInfo != null;
+        bool isPlayerCharacter = GameManager.Instance.selectedCharacterId == characterSo.characterId;
+
+        if (hasQuestGiver && !isPlayerCharacter) {
+            questPoint.enabled = true;
+            questPoint.questInfoForPoint = characterSo.questGiverInfo;
         }
     }
 }

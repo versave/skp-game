@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour {
 
     private void InitiateDialogue(CharacterSO characterSo) {
         cachedDialogueText = characterSo.dialogueText;
-        cachedQuestInfo = characterSo.questInfo;
+        cachedQuestInfo = characterSo.questGiverInfo;
 
         if (cachedQuestInfo != null) {
             cachedQuest = ResourceSystem.Instance.GetQuestById(cachedQuestInfo.id);
@@ -75,7 +75,7 @@ public class DialogueManager : MonoBehaviour {
         characterImage.sprite = characterSo.menuSprite;
         characterName.text = characterSo.displayName;
         dialogueText.text = cachedDialogueText;
-        questMenuButton.SetActive(characterSo.questInfo != null);
+        questMenuButton.SetActive(characterSo.questGiverInfo != null);
         dialogueMenu.SetActive(true);
 
         HandleQuestStateView();
