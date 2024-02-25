@@ -22,4 +22,6 @@ MonoBehaviour:
     type: 2}
   <ability>k__BackingField: {fileID: 11400000, guid: d1e182fd8f9054bfc9573b49d2fc5f9d,
     type: 2}
-  <questInfo>k__BackingField: {fileID: 0}
+  <questGiverInfo>k__BackingField: {fileID: 0}
+  <personalQuestInfo>k__BackingField: {fileID: 11400000, guid: 340f48cc222164ba1b8f06d7df564d2a,
+    type: 2}

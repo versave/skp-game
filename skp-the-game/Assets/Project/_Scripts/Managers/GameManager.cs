@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : NonMonoSingleton<GameManager> {
-    public UniqueCharacterId selectedCharacterId { get; set; } = UniqueCharacterId.Bojko;
+    public UniqueCharacterId selectedCharacterId { get; set; } = UniqueCharacterId.Valio;
 
     public void QuitGame() {
         Application.Quit();

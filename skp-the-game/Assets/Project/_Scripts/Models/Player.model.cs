@@ -1,5 +1,10 @@
 public enum InventoryItemType {
     Gold,
     Coke,
-    Grill
+    Grill,
+    Vape
+}
+
+public enum ObjectType {
+    Cat
 }

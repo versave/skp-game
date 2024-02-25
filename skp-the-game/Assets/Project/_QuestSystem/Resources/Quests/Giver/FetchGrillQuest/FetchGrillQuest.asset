@@ -25,4 +25,4 @@ MonoBehaviour:
   <questStartingState>k__BackingField: 1
   <questPrerequisites>k__BackingField: []
   <questStepPrefabs>k__BackingField:
-  - {fileID: 4776346014392099019, guid: 4271639a339b149899cb07b33f0da781, type: 3}
+  - {fileID: -6157554985746507430, guid: 4271639a339b149899cb07b33f0da781, type: 3}

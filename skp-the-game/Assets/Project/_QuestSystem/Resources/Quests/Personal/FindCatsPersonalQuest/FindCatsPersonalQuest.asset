@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef737f65ef554bb7a8509ae1dcabfc20, type: 3}
+  m_Name: FindCatsPersonalQuest
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: FindCatsPersonalQuest
+  <displayName>k__BackingField: "\u041D\u0430\u043C\u0435\u0440\u0438 5 \u043A\u043E\u0442\u043A\u0438"
+  <questGiver>k__BackingField: 
+  <description>k__BackingField: "\u0422\u0440\u044F\u0431\u0432\u0430 \u0434\u0430
+    \u043F\u043E\u0433\u0430\u043B\u044F \u0432\u0441\u044F\u043A\u0430 \u0435\u0434\u043D\u0430
+    \u043A\u043E\u0442\u043A\u0430"
+  <finishDescription>k__BackingField: 
+  <questStartingState>k__BackingField: 2
+  <questPrerequisites>k__BackingField: []
+  <questStepPrefabs>k__BackingField:
+  - {fileID: 5074601991274102775, guid: 78d3fd35edbad4e96bea60d58eca7231, type: 3}

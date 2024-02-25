@@ -5,6 +5,7 @@ public class GameEventsManager : Singleton<GameEventsManager> {
     public GoldEvents goldEvents;
     public InputEvents inputEvents;
     public InventoryEvents inventoryEvents;
+    public ObjectEvents objectEvents;
     public QuestEvents questEvents;
 
     protected override void Awake() {
@@ -15,5 +16,6 @@ public class GameEventsManager : Singleton<GameEventsManager> {
         questEvents = new QuestEvents();
         inventoryEvents = new InventoryEvents();
         dialogueEvents = new DialogueEvents();
+        objectEvents = new ObjectEvents();
     }
 }

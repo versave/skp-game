@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Character
   - NPC
+  - VapeSpawnPoint
   layers:
   - Default
   - TransparentFX
