@@ -9,29 +9,39 @@ public class DialogueManager : MonoBehaviour {
     [SerializeField] private GameObject questMenuButton;
     [SerializeField] private GameObject questStartButton;
     [SerializeField] private GameObject questFinishButton;
+    [SerializeField] private GameObject dismissButton;
+    [SerializeField] private Button followButton;
     [SerializeField] private Image characterImage;
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI dialogueText;
-
     private string cachedDialogueText;
     private Quest cachedQuest;
     private QuestInfoSO cachedQuestInfo;
 
+    private UniqueCharacterId characterId;
+
     private void Start() {
         dialogueMenu.SetActive(false);
         questFinishButton.SetActive(false);
+        dismissButton.SetActive(false);
     }
 
     private void OnEnable() {
         GameEventsManager.Instance.dialogueEvents.onInitiateDialogue += InitiateDialogue;
+        GameEventsManager.Instance.followerEvents.onCanFollowChange += UpdateFollowButtonState;
     }
 
     private void OnDisable() {
+        GameEventsManager.Instance.followerEvents.onCanFollowChange -= UpdateFollowButtonState;
         GameEventsManager.Instance.dialogueEvents.onInitiateDialogue -= InitiateDialogue;
     }
 
     public void OnFollowButtonClick() {
-        GameEventsManager.Instance.dialogueEvents.FollowButtonClick();
+        GameEventsManager.Instance.followerEvents.RecruitFollower(characterId);
+    }
+
+    public void OnDismissButtonClick() {
+        GameEventsManager.Instance.followerEvents.DismissFollower(characterId);
     }
 
     public void OnQuestStartButtonClick() {
@@ -65,6 +75,7 @@ public class DialogueManager : MonoBehaviour {
     }
 
     private void InitiateDialogue(CharacterSO characterSo) {
+        characterId = characterSo.characterId;
         cachedDialogueText = characterSo.dialogueText;
         cachedQuestInfo = characterSo.questGiverInfo;
 
@@ -78,6 +89,7 @@ public class DialogueManager : MonoBehaviour {
         questMenuButton.SetActive(characterSo.questGiverInfo != null);
         dialogueMenu.SetActive(true);
 
+        SetFollowButtonInteractable(FollowerManager.Instance.CanFollow(characterSo.characterId));
         HandleQuestStateView();
     }
 
@@ -114,5 +126,15 @@ public class DialogueManager : MonoBehaviour {
     private void ResetFinishQuestView() {
         questFinishButton.SetActive(false);
         dialogueText.text = cachedDialogueText;
+    }
+
+    private void SetFollowButtonInteractable(bool interactable) {
+        followButton.interactable = interactable;
+    }
+
+    private void UpdateFollowButtonState(UniqueCharacterId id) {
+        if (id == characterId) {
+            SetFollowButtonInteractable(true);
+        }
     }
 }

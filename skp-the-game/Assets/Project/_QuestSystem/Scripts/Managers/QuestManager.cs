@@ -92,8 +92,9 @@ public class QuestManager : MonoBehaviour {
     }
 
     private void ClaimRewards(Quest quest) {
-        Debug.Log("Quest finished! Claiming rewards...");
-        // Reward the player with specified rewards from the quest or something else
+        if (quest.info.questGiverId != UniqueCharacterId.None) {
+            GameEventsManager.Instance.followerEvents.SetCanFollow(quest.info.questGiverId);
+        }
     }
 
     private void BroadcastInitialQuestState() {

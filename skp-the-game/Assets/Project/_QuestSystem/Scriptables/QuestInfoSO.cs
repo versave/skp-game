@@ -8,7 +8,9 @@ public class QuestInfoSO : ScriptableObject {
     public string id { get; private set; }
 
     [field: SerializeField] public string displayName { get; private set; }
-    [field: SerializeField] public string questGiver { get; private set; }
+
+    [field: SerializeField] public UniqueCharacterId questGiverId { get; private set; } = UniqueCharacterId.None;
+    [field: SerializeField] public string questGiverName { get; private set; }
 
     [field: TextArea]
     [field: SerializeField]

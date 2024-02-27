@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: FetchVapePersonalQuest
   <displayName>k__BackingField: Fetch Vape
-  <questGiver>k__BackingField: Personal
+  <questGiverId>k__BackingField: 8
+  <questGiverName>k__BackingField: Personal
   <description>k__BackingField: "\u0422\u0440\u044F\u0431\u0432\u0430 \u0434\u0430
     \u0441\u0438 \u043D\u0430\u043C\u0435\u0440\u044F \u0432\u0435\u0439\u043F\u0447\u0435\u0442\u043E"
   <finishDescription>k__BackingField: 

@@ -2,6 +2,7 @@
 
 public class GameEventsManager : Singleton<GameEventsManager> {
     public DialogueEvents dialogueEvents;
+    public FollowerEvents followerEvents;
     public GoldEvents goldEvents;
     public InputEvents inputEvents;
     public InventoryEvents inventoryEvents;
@@ -17,5 +18,6 @@ public class GameEventsManager : Singleton<GameEventsManager> {
         inventoryEvents = new InventoryEvents();
         dialogueEvents = new DialogueEvents();
         objectEvents = new ObjectEvents();
+        followerEvents = new FollowerEvents();
     }
 }

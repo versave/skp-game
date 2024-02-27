@@ -25,5 +25,6 @@ public enum UniqueCharacterId {
     Vasko,
     Niki,
     Mitko,
-    Sami
+    Sami,
+    None
 }

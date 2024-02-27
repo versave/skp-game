@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: FetchCokeQuest
   <displayName>k__BackingField: Fetch Coke
-  <questGiver>k__BackingField: Bojko
+  <questGiverId>k__BackingField: 1
+  <questGiverName>k__BackingField: Bojko
   <description>k__BackingField: "\u041E\u0442\u0438\u0434\u0438 \u0434\u043E \u0431\u0443\u043B\u043C\u0430\u0433
     \u0438 \u043C\u0438 \u0432\u0437\u0435\u043C\u0438 \u043A\u043E\u043B\u0438\u0447\u043A\u0430.
     \u0421\u0442\u0440\u0443\u0432\u0430 2\u043B\u0432."

@@ -17,7 +17,7 @@ public class QuestJournalItem : MonoBehaviour {
     public void UpdateUI(Quest quest) {
         questTitleText.text = quest.info.displayName;
         questDescriptionText.text = quest.info.description;
-        questSourceText.text = quest.info.questGiver;
+        questSourceText.text = quest.info.questGiverName;
         questProgressText.text = quest.state.ToString();
     }
 }
