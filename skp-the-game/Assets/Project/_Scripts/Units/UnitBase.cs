@@ -12,9 +12,14 @@ public abstract class UnitBase : MonoBehaviour {
         animator.runtimeAnimatorController = characterSo.animatorController;
     }
 
-    public void SelfDestroyOnPlayerPicked() {
+    protected void SelfDestroyOnPlayerPicked() {
         if (GameManager.Instance.selectedCharacterId == characterSo.characterId) {
             Destroy(gameObject);
         }
+    }
+
+    protected void EnableQuestPoint(QuestInfoSO questInfo) {
+        questPoint.enabled = true;
+        questPoint.SetQuestInfo(questInfo);
     }
 }

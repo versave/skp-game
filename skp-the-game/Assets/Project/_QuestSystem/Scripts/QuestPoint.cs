@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class QuestPoint : MonoBehaviour {
-    public QuestInfoSO questInfoForPoint;
+    [SerializeField] private QuestInfoSO questInfoForPoint;
     [SerializeField] private QuestIcon questIcon;
     [SerializeField] private bool isStartPoint = true;
     [SerializeField] private bool isFinishPoint = true;
@@ -71,5 +71,9 @@ public class QuestPoint : MonoBehaviour {
         if (questIcon) {
             questIcon.SetState(currentQuestState, isStartPoint, isFinishPoint);
         }
+    }
+
+    public void SetQuestInfo(QuestInfoSO questInfo) {
+        questInfoForPoint = questInfo;
     }
 }

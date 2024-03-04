@@ -26,8 +26,7 @@ public class PlayerCharacterUnit : UnitBase {
         bool isPlayerCharacter = GameManager.Instance.selectedCharacterId == characterSo.characterId;
 
         if (hasPersonalGiver && isPlayerCharacter) {
-            questPoint.enabled = true;
-            questPoint.questInfoForPoint = characterSo.personalQuestInfo;
+            EnableQuestPoint(characterSo.personalQuestInfo);
         }
     }
 
