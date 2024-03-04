@@ -85,6 +85,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6318918405696272441, guid: 055c081ce9d9b4e128f405f108f5ee54, type: 3}
+    - {fileID: 6747358934661229471, guid: 055c081ce9d9b4e128f405f108f5ee54, type: 3}
+    - {fileID: 9176648717330261642, guid: 055c081ce9d9b4e128f405f108f5ee54, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5092369484473927215, guid: 055c081ce9d9b4e128f405f108f5ee54, type: 3}
     m_AddedGameObjects: []
@@ -195,7 +197,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 834277070077514330}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 808461672c244e86a430fe365c1b3ed6, type: 3}
   m_Name: 

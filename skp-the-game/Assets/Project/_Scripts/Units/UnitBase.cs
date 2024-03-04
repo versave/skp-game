@@ -5,6 +5,7 @@ public abstract class UnitBase : MonoBehaviour {
     public Animator animator;
     public CharacterSO characterSo;
     public QuestPoint questPoint;
+    public AIMovement aiMovement;
 
     protected virtual void AssignCharacterValues() {
         gameObject.name = characterSo.displayName;
@@ -21,5 +22,9 @@ public abstract class UnitBase : MonoBehaviour {
     protected void EnableQuestPoint(QuestInfoSO questInfo) {
         questPoint.enabled = true;
         questPoint.SetQuestInfo(questInfo);
+    }
+
+    protected void SetAICharacterId() {
+        aiMovement.characterId = characterSo.characterId;
     }
 }

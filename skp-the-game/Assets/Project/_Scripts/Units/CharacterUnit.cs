@@ -16,6 +16,7 @@ public class CharacterUnit : UnitBase {
     protected override void AssignCharacterValues() {
         base.AssignCharacterValues();
         SetQuestGiver();
+        SetAICharacterId();
     }
 
     private void SetQuestGiver() {

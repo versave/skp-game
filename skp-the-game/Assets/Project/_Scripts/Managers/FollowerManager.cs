@@ -5,6 +5,7 @@ using UnityEngine;
 public class FollowerManager : Singleton<FollowerManager> {
     private readonly UniqueCharacterId[] customFollowerDefaults = { UniqueCharacterId.Valio };
     private readonly Dictionary<UniqueCharacterId, Follower> followers = new();
+    public Transform followerTarget { get; private set; }
 
     private void Start() {
         InitializeFollowers();
@@ -14,12 +15,16 @@ public class FollowerManager : Singleton<FollowerManager> {
         GameEventsManager.Instance.followerEvents.onCanFollowChange += SetCanFollow;
         GameEventsManager.Instance.followerEvents.onFollowerRecruited += OnFollowerRecruited;
         GameEventsManager.Instance.followerEvents.onFollowerDismissed += OnFollowerDismissed;
+
+        PlayerCharacterUnit.OnPlayerSpawn += SetFollowerTarget;
     }
 
     private void OnDisable() {
         GameEventsManager.Instance.followerEvents.onCanFollowChange -= SetCanFollow;
         GameEventsManager.Instance.followerEvents.onFollowerRecruited -= OnFollowerRecruited;
         GameEventsManager.Instance.followerEvents.onFollowerDismissed -= OnFollowerDismissed;
+
+        PlayerCharacterUnit.OnPlayerSpawn -= SetFollowerTarget;
     }
 
     private void InitializeFollowers() {
@@ -30,11 +35,7 @@ public class FollowerManager : Singleton<FollowerManager> {
         }
 
         // Set custom follower defaults
-        followers[UniqueCharacterId.Valio] = new Follower(true, true);
-    }
-
-    public bool CanFollow(UniqueCharacterId id) {
-        return followers[id].canFollow;
+        followers[UniqueCharacterId.Valio] = new Follower(true, false);
     }
 
     private void SetCanFollow(UniqueCharacterId id) {
@@ -42,10 +43,18 @@ public class FollowerManager : Singleton<FollowerManager> {
     }
 
     private void OnFollowerRecruited(UniqueCharacterId id) {
-        Debug.Log("Follower recruited: " + id);
+        followers[id].isFollowing = true;
     }
 
     private void OnFollowerDismissed(UniqueCharacterId id) {
-        Debug.Log("Follower dismissed: " + id);
+        followers[id].isFollowing = false;
+    }
+
+    private void SetFollowerTarget(Transform target) {
+        followerTarget = target;
+    }
+
+    public Follower GetFollowerInfo(UniqueCharacterId id) {
+        return followers[id];
     }
 }

@@ -14,11 +14,11 @@ public class DialogueManager : MonoBehaviour {
     [SerializeField] private Image characterImage;
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI dialogueText;
+
+    private UniqueCharacterId cachedCharacterId;
     private string cachedDialogueText;
     private Quest cachedQuest;
     private QuestInfoSO cachedQuestInfo;
-
-    private UniqueCharacterId characterId;
 
     private void Start() {
         dialogueMenu.SetActive(false);
@@ -28,20 +28,24 @@ public class DialogueManager : MonoBehaviour {
 
     private void OnEnable() {
         GameEventsManager.Instance.dialogueEvents.onInitiateDialogue += InitiateDialogue;
-        GameEventsManager.Instance.followerEvents.onCanFollowChange += UpdateFollowButtonState;
+        GameEventsManager.Instance.followerEvents.onCanFollowChange += HandleFollowButtonsState;
+        GameEventsManager.Instance.followerEvents.onFollowerRecruited += HandleFollowButtonsState;
+        GameEventsManager.Instance.followerEvents.onFollowerDismissed += HandleFollowButtonsState;
     }
 
     private void OnDisable() {
-        GameEventsManager.Instance.followerEvents.onCanFollowChange -= UpdateFollowButtonState;
+        GameEventsManager.Instance.followerEvents.onCanFollowChange -= HandleFollowButtonsState;
         GameEventsManager.Instance.dialogueEvents.onInitiateDialogue -= InitiateDialogue;
+        GameEventsManager.Instance.followerEvents.onFollowerRecruited -= HandleFollowButtonsState;
+        GameEventsManager.Instance.followerEvents.onFollowerDismissed -= HandleFollowButtonsState;
     }
 
     public void OnFollowButtonClick() {
-        GameEventsManager.Instance.followerEvents.RecruitFollower(characterId);
+        GameEventsManager.Instance.followerEvents.RecruitFollower(cachedCharacterId);
     }
 
     public void OnDismissButtonClick() {
-        GameEventsManager.Instance.followerEvents.DismissFollower(characterId);
+        GameEventsManager.Instance.followerEvents.DismissFollower(cachedCharacterId);
     }
 
     public void OnQuestStartButtonClick() {
@@ -75,7 +79,7 @@ public class DialogueManager : MonoBehaviour {
     }
 
     private void InitiateDialogue(CharacterSO characterSo) {
-        characterId = characterSo.characterId;
+        cachedCharacterId = characterSo.characterId;
         cachedDialogueText = characterSo.dialogueText;
         cachedQuestInfo = characterSo.questGiverInfo;
 
@@ -89,14 +93,14 @@ public class DialogueManager : MonoBehaviour {
         questMenuButton.SetActive(characterSo.questGiverInfo != null);
         dialogueMenu.SetActive(true);
 
-        SetFollowButtonInteractable(FollowerManager.Instance.CanFollow(characterSo.characterId));
+        HandleFollowButtonsState(cachedCharacterId);
         HandleQuestStateView();
     }
 
     private void HandleQuestStateView() {
         bool hasNoQuest = cachedQuestInfo == null;
-        bool questCanBeFinished = cachedQuest.state == QuestState.CanFinish;
-        bool questIsFinished = cachedQuest.state == QuestState.Finished;
+        bool questCanBeFinished = !hasNoQuest && cachedQuest.state == QuestState.CanFinish;
+        bool questIsFinished = !hasNoQuest && cachedQuest.state == QuestState.Finished;
 
         if (hasNoQuest || questCanBeFinished || questIsFinished) {
             questMenuButton.SetActive(false);
@@ -128,13 +132,24 @@ public class DialogueManager : MonoBehaviour {
         dialogueText.text = cachedDialogueText;
     }
 
-    private void SetFollowButtonInteractable(bool interactable) {
-        followButton.interactable = interactable;
-    }
+    private void HandleFollowButtonsState(UniqueCharacterId id) {
+        if (id != cachedCharacterId) {
+            return;
+        }
 
-    private void UpdateFollowButtonState(UniqueCharacterId id) {
-        if (id == characterId) {
-            SetFollowButtonInteractable(true);
+        Follower followerInfo = FollowerManager.Instance.GetFollowerInfo(cachedCharacterId);
+        bool canFollow = followerInfo.canFollow;
+        bool isFollowing = followerInfo.isFollowing;
+
+        Debug.Log("Can follow: " + canFollow + " Is following: " + isFollowing);
+
+        if (isFollowing) {
+            dismissButton.SetActive(true);
+            followButton.gameObject.SetActive(false);
+        } else {
+            followButton.gameObject.SetActive(true);
+            dismissButton.SetActive(false);
+            followButton.interactable = canFollow;
         }
     }
 }
