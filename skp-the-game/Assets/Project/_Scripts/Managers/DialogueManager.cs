@@ -141,8 +141,6 @@ public class DialogueManager : MonoBehaviour {
         bool canFollow = followerInfo.canFollow;
         bool isFollowing = followerInfo.isFollowing;
 
-        Debug.Log("Can follow: " + canFollow + " Is following: " + isFollowing);
-
         if (isFollowing) {
             dismissButton.SetActive(true);
             followButton.gameObject.SetActive(false);
