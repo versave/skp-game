@@ -6,8 +6,8 @@ public class GameEventsManager : Singleton<GameEventsManager> {
     public GoldEvents goldEvents;
     public InputEvents inputEvents;
     public InventoryEvents inventoryEvents;
+
     public ObjectEvents objectEvents;
-    public QuestEvents questEvents;
 
     protected override void Awake() {
         base.Awake();
@@ -20,4 +20,6 @@ public class GameEventsManager : Singleton<GameEventsManager> {
         objectEvents = new ObjectEvents();
         followerEvents = new FollowerEvents();
     }
+
+    public QuestEvents questEvents;
 }
